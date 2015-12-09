@@ -1,0 +1,23 @@
+<!DOCTYPE html><!DOCTYPE html>
+<html lang="en">
+{% import 'widgets.html' as widgets %}
+{{ widgets.buttons() }}
+<head>
+    <h1>Search Bug</h1>
+
+</head>
+<body>
+    <form action="/search" method='POST'>
+    <input name="query" type="text" width="40" placeholder="Title or Tag">
+    <input type="submit" name="action" value="search"><br>
+    </form><br><br>
+
+    <table>
+        <tr>
+            {% for result in results%}
+                <tr><td><a href="/viewbug/{{ result.bid }}">{{ result.title }}</a></td><td> &nbsp;&nbsp;&nbsp;Bug ID:{{ result.bid }}</td><td>&nbsp;&nbsp;&nbsp; Created on: {{ result.cdate }}</td></tr>
+            {% endfor %}
+        </tr>
+    </table>
+</body>
+</html>

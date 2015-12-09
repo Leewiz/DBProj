@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+{% import 'widgets.html' as widgets %}
+{{ widgets.buttons() }}
+<head>
+    <title>CreateUser</title>
+    {% if fail == 1 %}
+        <p style="color:red">Error: Complete ALL fields.</p>
+    {% elif fail == 2 %}
+        <p style="color:red">Error: Username not unique.</p>
+    {% elif fail == 3 %}
+        <p style="color:red">Error: Email already used.</p>
+    {% endif %}
+</head>
+<body>
+<h1>Create User</h1>
+<form method="POST">
+    <input name="username" type="text" width="100" placeholder="Username"><br>
+    <input name="displayname" type="text" width="100" placeholder="Display Name"><br>
+    <input name="email" type="text" width="100" placeholder="E-Mail"><br>
+    <input name="password" type="text" width="100" placeholder="Password"><br>
+    <input type="submit" name="action" value="Create">
+</form>
+</body>
+</html>

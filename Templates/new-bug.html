@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+{% import 'widgets.html' as widgets %}
+{{ widgets.buttons() }}
+<head>
+    <title>Create New Bug</title>
+</head>
+<body>
+{% if bid == None %}
+<p style="color:red">Error: Complete ALL fields. If you will be working on this bug, assign yourself as the assignee</p>
+{% elif bid == '' %}
+<p style="color:red">Error: Assignee was not found in our database</p>
+{% endif %}
+<h1>Enter New Bug</h1>
+<form action="/add" method="POST">
+    <input name="title" type="text" width="100" placeholder="Title"><br>
+    <textarea name="detail" rows="10" cols="50" placeholder="Notes"></textarea><br>
+    <input name="tags" type="text" width="100" placeholder="Tags (comma separated)"><br>
+    <input name="assignee" type="text" width="100" placeholder="Assign to (username)"><br>
+    <input type="submit" name="action" value="Add">
+</form>
+</body>
+</html>

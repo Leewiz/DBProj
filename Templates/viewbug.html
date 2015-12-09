@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+{% import 'widgets.html' as widgets %}
+{{ widgets.buttons() }}
+<html lang="en">
+<head>
+</head>
+<body>
+    <h1>{{ title }}(ID: {{ bid }}){% if auth_user == cid or auth_user == assignee_id%}<br>
+        <button onclick="window.location.href='/editbug/{{ bid }}'">edit this page</button>{% endif %}</h1>
+    <b>created by:</b> {{ cname }}<br>
+    <b>Assigned to:</b> {{ assignee }}
+    <h2>Number of Votes: {{ votes }}</h2>
+    <form action="/viewbug/{{ bid }}" method='POST'>
+        <input type="submit" name="action" value="Upvote">
+        <input type="submit" name="action" value="Downvote">
+    </form>
+    <br>
+<h2>Bug Description</h2>
+{{ description }}<br>
+<h3>Tags: </h3>
+<p>{% for tag in tags %}
+    {{ tag }}<br>
+    {% endfor %}
+</p>
+    <h4>Status: {% if status %} closed {% else %} open {% endif %}</h4>
+<h5>Comments:</h5>
+{% for comments in comments %}
+    Commented by <a href="/profile/{{ comments.uid }}">{{ comments.display_name }}</a> on {{ comments.dates }}:<br>{{ comments.text }}<br><br><br>
+    {% endfor %}
+<h5>Add a Comment:</h5>
+<form action="/viewbug/{{ bid }}" method="POST">
+    <textarea name="text" rows="4" cols="50" placeholder="Enter Comment Here"></textarea><br>
+    <input type="submit" name="action" value="Comment">
+</form>
+</body>
+</html

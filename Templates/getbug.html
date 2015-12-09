@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+{% import 'widgets.html' as widgets %}
+{{ widgets.buttons() }}
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+th {
+    text-align: left;
+}
+</style>
+</head>
+<body>
+<h1>Search Bugs</h1>
+<form action="/search" method="GET">
+    <input name="title" width="200" placeholder="Search By Title"><br>
+    <input name="creator" width="200" placeholder="Search By User"><br>
+    <input name="tag" width="200" placeholder="Search By Tags"><br><br><br><br>
+</form>
+
+
+<table style="width:50%">
+  <tr>
+    <th>Title</th>
+    <th>Creator</th>
+    <th>Votes</th>
+  </tr>
+  <tr>
+    <td>SomeTitle</td>
+    <td>SomeUser</td>
+    <td>SomeVotes</td>
+  </tr>
+</table>
+
+</body>
+</html>

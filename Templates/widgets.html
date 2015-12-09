@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% macro buttons() %}
+<td>
+    <div>
+        <table>
+            <tr>
+                <td><button onclick="window.location.href='/'">home</button></td>
+                <td><button onclick="window.location.href='/add'">add new bug</button></td>
+                <td><form action="/search" method="POST"></td>
+                <td><input type="text" name="query" placeholder="Title or Tag"><input type="submit" name="action" value="search"></td></form>
+                <td><button onclick="window.location.href='/logout'">logout</button></td>
+            </tr>
+        </table>
+    </div>
+</td>
+{% endmacro %}
+</html>

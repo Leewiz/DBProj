@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+{% import 'widgets.html' as widgets %}
+{{ widgets.buttons() }}
+<head>
+  <h1>SM3 Bug Tracker</h1>
+</head>
+<body>
+<h2>Log In</h2>
+<p>You are not yet logged in.</p>
+<form action="/login" method='POST'>
+  <input name="username" type="text" width="40" placeholder="Username"><br>
+  <input name="passwd" type="password" width="40" placeholder="Password"><br>
+  <input type="submit" name="action" value="Log in">
+  <input type="submit" name="action" value="Create account">
+</form>
+</body>
+</html>

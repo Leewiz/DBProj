@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<button onclick="window.location.href='/'">home</button>
+<button onclick="window.location.href='/logout'">logout</button>
+
+    <h1>{{ title }}(ID: {{ bid }})</h1><form action="/editbug/{{ bid }}" method="POST"><textarea name="title" rows="1" cols="50" placeholder={{title}} ></textarea>
+    <br><input type="submit" name="action" value="Submit New Title"></form>
+    <br>
+    <b>Assigned to:</b> {{ assignee }}
+    <h2>Number of Votes: {{ votes }}</h2>
+    <form action="/viewbug/{{ bid }}" method='POST'>
+        <input type="submit" name="action" value="Upvote">
+        <input type="submit" name="action" value="Downvote">
+    </form>
+    <br>
+<h2>Bug Description</h2>
+{{ description }}
+<br><form action="/editbug/{{ bid }}" method="POST"><textarea name="description" rows="10" cols="50" placeholder="New Description" ></textarea><br>
+<input type="submit" name="action" value="Submit New Description"></form><br>
+<h3>Tags: </h3>
+<p>{% for tag in tags %}
+    {{ tag }}<br>
+    {% endfor %}</p>
+<h4>Status: {% if status %} Open {% else %} Closed {% endif %}</h4>
+<form action="/editbug/{{ bid }}" method="POST"><input type="submit" name="action" value="Close Bug"></form>
+<h5>Comments:</h5>
+{% for comments in comments %}
+    Commented by {{ comments.display_name }} on {{ comments.dates }}:<br>{{ comments.text }}<br><br><br>
+    {% endfor %}
+<h5>Add a Comment:</h5>
+<form action="/viewbug/{{ bid }}" method="POST">
+    <textarea name="text" rows="4" cols="50" placeholder="Enter Comment Here"></textarea><br>
+    <input type="submit" name="action" value="Comment">
+</form>
+
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+{% import 'widgets.html' as widgets %}
+{{ widgets.buttons() }}
+<head>
+  <title>{{ users.name }}'s Profile</title>
+</head>
+<head>
+  <h1>{{ users.name }}'s Profile</h1>
+</head>
+  {% if auth_user != users.uid %}
+  {% endif %}
+    <div style="width: 100%; overflow: hidden;">
+    <div style="width: 300px; float: left;">
+        <table><tr><th><h4>Bugs Created by "{{ users.name }}"</h4></th></tr>
+        {% for bug in bugs %}
+        <tr><td><a href="/viewbug/{{ bug.bid }}">{{ bug.title }}</a></td>
+        {% endfor %}
+        </table>
+    </div>
+    <div style="margin-left: 300px;">
+        <table><tr><th><h4>Bugs assigned to "{{ users.name }}"</h4></th></tr>
+        {% for assigned in assigned_bugs %}
+        <tr><td><a href="/viewbug/{{ assigned.bid }}">{{ assigned.title }}</a></td></tr>
+        {% endfor %}
+        </table>
+    </div>
+    </div>
+</html>
